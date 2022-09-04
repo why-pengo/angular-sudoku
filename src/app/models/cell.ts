@@ -1,6 +1,7 @@
 export interface cell {
-    id: number,
-    possibilites: number[],
-    given: number,
+    id: string, // row and column
+    guess: string[],
+    value: string,
+    solution: string,
 }
 // https://en.wikipedia.org/wiki/Glossary_of_Sudoku
