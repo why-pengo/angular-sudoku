@@ -1,0 +1,43 @@
+.square {
+    margin: .1em;
+    /*padding: 2em;*/
+    width: 4em;
+    height: 4em;
+    border: thin solid #000000;
+    border-radius: .2em;
+}
+
+.selected {
+    color: white;
+    background-color: black;
+}
+
+.selected-red {
+    color: white;
+    background-color: red;
+    /*opacity: .85;*/
+}
+
+.grid-dark {
+    color: white;
+    background-color: #5a6268;
+}
+
+.number-centered {
+    text-align: center !important;
+}
+
+.crosshair {
+    cursor: crosshair;
+}
+
+.sq_value {
+    font-size: 1.8em;
+    text-align: center;
+    transform: translateY(-60%);
+    /*top: 50%;*/
+}
+
+.sq_title {
+    font-size: 0.8em;
+}
