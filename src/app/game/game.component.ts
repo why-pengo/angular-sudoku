@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Renderer2 } from '@angular/core';
+
 import { SudokuCreator } from '@algorithm.ts/sudoku';
 import { cell } from '../models/cell';
 
@@ -11,7 +13,7 @@ export class GameComponent implements OnInit {
   // 3 x 3 = 9
   creator = new SudokuCreator({ childMatrixSize: 3 })
   sudoku = this.creator.createSudoku(1.0);
-  rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
+  rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
   cells: cell[] = [];
   grid1 = ['A1', 'B1', 'C1', 'A2', 'B2', 'C2', 'A3', 'B3', 'C3'];
   grid2 = ['A4', 'B4', 'C4', 'A5', 'B5', 'C5', 'A6', 'B6', 'C6'];
@@ -22,10 +24,9 @@ export class GameComponent implements OnInit {
   grid7 = ['G1', 'H1', 'I1', 'G2', 'H2', 'I2', 'G3', 'H3', 'I3'];
   grid8 = ['G4', 'H4', 'I4', 'G5', 'H5', 'I5', 'G6', 'H6', 'I6'];
   grid9 = ['G7', 'H7', 'I7', 'G8', 'H8', 'I8', 'G9', 'H9', 'I9'];
-  squares = this.grid1.concat(this.grid2, this.grid3, this.grid4, this.grid5, this.grid6, this.grid7, this.grid8, this.grid9);
 
-  constructor() {
-    console.log(`sudoku = ${JSON.stringify(this.sudoku)}`);
+  constructor(private render: Renderer2) {
+    // console.log(`sudoku = ${JSON.stringify(this.sudoku)}`);
     for (let i = 0; i < 9; i++) {
       let row_p = this.sudoku.puzzle[i]
       let row_s = this.sudoku.solution[i]
@@ -37,7 +38,7 @@ export class GameComponent implements OnInit {
         this.cells.push(c);
       };
     }
-    console.log(`cells = ${JSON.stringify(this.cells)}`);
+    // console.log(`cells = ${JSON.stringify(this.cells)}`);
   }
 
   ngOnInit(): void {
@@ -48,8 +49,10 @@ export class GameComponent implements OnInit {
   initializeBoard() {
     for (let i in this.cells) {
       let cell = this.cells[i];
-      let el = document.getElementById(cell.id)!;
-      el.innerHTML = cell.value;
+      // console.log(`working on ${JSON.stringify(cell)}`);
+      let el = document.getElementById(cell.id) as HTMLElement;
+      let ch = el.querySelector(".cell_value") as HTMLElement;
+      ch.textContent = cell.value;
     }
   }
 
@@ -65,6 +68,30 @@ export class GameComponent implements OnInit {
     for (let i in gridList) {
       let g = document.getElementById(gridList[i])!;
       g.classList.add('grid-dark');
+    }
+  }
+
+  onShowCellId(event: Event) {
+    let target = event.target as HTMLInputElement;
+    let nodes = document.querySelectorAll('.cell_title') as NodeListOf<HTMLElement>;
+    if (target.checked) {
+      nodes.forEach(node => {
+        // node.classList.remove("invisible");
+        this.render.removeClass(node, "invisible");
+        // node.classList.add("visible");
+        this.render.addClass(node, "visible");
+        console.log("checked");
+        console.log(node.classList.value);
+      });
+    } else {
+      nodes.forEach(node => {
+        // node.classList.remove("visible");
+        this.render.removeClass(node, "visisble");
+        // node.classList.add("invisible");
+        this.render.addClass(node, "invisisble");
+        console.log("unchecked");
+        console.log(node.classList.value);
+      });
     }
   }
 

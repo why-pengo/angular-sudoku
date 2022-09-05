@@ -1,4 +1,4 @@
-.square {
+.cell {
     margin: .2rem;
     font-size: 2rem;
     width: 6rem;
@@ -6,6 +6,11 @@
     text-align: center !important;
     border: thin solid #000000;
     border-radius: .2rem;
+}
+
+.btn_numbers {
+    position: relative;
+    top: 25%;
 }
 
 .numbers {
@@ -34,13 +39,14 @@
     cursor: crosshair;
 }
 
-.sq_value {
-    font-size: 1.8rem;
+.cell_value {
+    float: right;
+    font-size: 2rem;
     text-align: center;
-    transform: translateY(-60%);
-    /*top: 50%;*/
+    /* transform: translateY(-60%); */
 }
 
-.sq_title {
+.cell_title invisible {
+    float: left;
     font-size: 0.8rem;
 }
