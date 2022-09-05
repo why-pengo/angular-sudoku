@@ -46,7 +46,7 @@
     /* transform: translateY(-60%); */
 }
 
-.cell_title invisible {
+.cell_title {
     float: left;
     font-size: 0.8rem;
 }

@@ -49,6 +49,8 @@ export class GameComponent implements OnInit {
   initializeBoard() {
     for (let i in this.cells) {
       let cell = this.cells[i];
+      if (cell.value === '-1') 
+        continue;
       // console.log(`working on ${JSON.stringify(cell)}`);
       let el = document.getElementById(cell.id) as HTMLElement;
       let ch = el.querySelector(".cell_value") as HTMLElement;
@@ -76,19 +78,15 @@ export class GameComponent implements OnInit {
     let nodes = document.querySelectorAll('.cell_title') as NodeListOf<HTMLElement>;
     if (target.checked) {
       nodes.forEach(node => {
-        // node.classList.remove("invisible");
         this.render.removeClass(node, "invisible");
-        // node.classList.add("visible");
         this.render.addClass(node, "visible");
         console.log("checked");
         console.log(node.classList.value);
       });
     } else {
       nodes.forEach(node => {
-        // node.classList.remove("visible");
         this.render.removeClass(node, "visisble");
-        // node.classList.add("invisible");
-        this.render.addClass(node, "invisisble");
+        this.render.addClass(node, "invisible");
         console.log("unchecked");
         console.log(node.classList.value);
       });
