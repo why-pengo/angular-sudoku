@@ -93,4 +93,35 @@ export class GameComponent implements OnInit {
     }
   }
 
+  onBoardClick(event: Event) {
+    console.log(event);
+    const target = event.target as HTMLElement;
+    let cell;
+    // console.log(`target_id clicked = ${target.id}`);
+    if (target.id.startsWith('R')) {  // This is the Row not the cell
+      return;
+    } else {
+        cell = target.id;
+    }
+    console.log(`cell clicked = ${cell}`);
+    // if (gameState.wasNumberClicked) {
+    //     update_puzzle(sq);
+    // } else {
+    //     if (sqHasValue(sq)) {
+    //         const classes = String(document.getElementById(sq).classList);
+    //         const buf = classes.split(' ');
+    //         const r = buf[1];
+    //         const c = buf[2];
+    //         console.log(`classes = ${classes}, buf = ${buf}, r = ${r}, c = ${c}`);
+    //         if (gameState.hlRow !== '0') {
+    //             unHighlightRowAndColumn(gameState.hlRow, gameState.hlColumn);
+    //             unHighlightSquareByValue(user_puzzle[sq]);
+    //             setGridDarkBg();
+    //         }
+    //         highlightRowAndColumn(r, c);
+    //         highlightSquareByValue(user_puzzle[sq]);
+    //     }
+    // }
+  }
+
 }

@@ -7,13 +7,15 @@ import { GameComponent } from './game/game.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TimeComponent } from './time/time.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponent,
     SettingsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TimeComponent
   ],
   imports: [
     BrowserModule,
