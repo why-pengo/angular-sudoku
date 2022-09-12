@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Renderer2 } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import { SudokuCreator } from '@algorithm.ts/sudoku';
 import { cell } from '../models/cell';
+import { GameStateService } from '../services/game-state.service';
 
 @Component({
   selector: 'app-game',
@@ -10,23 +11,12 @@ import { cell } from '../models/cell';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  // 3 x 3 = 9
-  creator = new SudokuCreator({ childMatrixSize: 3 })
-  sudoku = this.creator.createSudoku(1.0);
-  rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+  sudoku = this.gameState.sudoku;
+  rows = this.gameState.rows;
   cells: cell[] = [];
-  grid1 = ['A1', 'B1', 'C1', 'A2', 'B2', 'C2', 'A3', 'B3', 'C3'];
-  grid2 = ['A4', 'B4', 'C4', 'A5', 'B5', 'C5', 'A6', 'B6', 'C6'];
-  grid3 = ['A7', 'B7', 'C7', 'A8', 'B8', 'C8', 'A9', 'B9', 'C9'];
-  grid4 = ['D1', 'E1', 'F1', 'D2', 'E2', 'F2', 'D3', 'E3', 'F3'];
-  grid5 = ['D4', 'E4', 'F4', 'D5', 'E5', 'F5', 'D6', 'E6', 'F6'];
-  grid6 = ['D7', 'E7', 'F7', 'D8', 'E8', 'F8', 'D9', 'E9', 'F9'];
-  grid7 = ['G1', 'H1', 'I1', 'G2', 'H2', 'I2', 'G3', 'H3', 'I3'];
-  grid8 = ['G4', 'H4', 'I4', 'G5', 'H5', 'I5', 'G6', 'H6', 'I6'];
-  grid9 = ['G7', 'H7', 'I7', 'G8', 'H8', 'I8', 'G9', 'H9', 'I9'];
 
-  constructor(private render: Renderer2) {
-    // console.log(`sudoku = ${JSON.stringify(this.sudoku)}`);
+  constructor(private render: Renderer2, private gameState: GameStateService) {
+    console.log(`sudoku = ${JSON.stringify(this.sudoku)}`);
     for (let i = 0; i < 9; i++) {
       let row_p = this.sudoku.puzzle[i]
       let row_s = this.sudoku.solution[i]
@@ -49,7 +39,7 @@ export class GameComponent implements OnInit {
   initializeBoard() {
     for (let i in this.cells) {
       let cell = this.cells[i];
-      if (cell.value === '-1') 
+      if (cell.value === '-1')
         continue;
       // console.log(`working on ${JSON.stringify(cell)}`);
       let el = document.getElementById(cell.id) as HTMLElement;
@@ -59,11 +49,11 @@ export class GameComponent implements OnInit {
   }
 
   setGridDarkBg() {
-    this.gridDarkBg(this.grid1);
-    this.gridDarkBg(this.grid3);
-    this.gridDarkBg(this.grid5);
-    this.gridDarkBg(this.grid7);
-    this.gridDarkBg(this.grid9);
+    this.gridDarkBg(this.gameState.grid1);
+    this.gridDarkBg(this.gameState.grid3);
+    this.gridDarkBg(this.gameState.grid5);
+    this.gridDarkBg(this.gameState.grid7);
+    this.gridDarkBg(this.gameState.grid9);
   }
 
   gridDarkBg(gridList: any) {
@@ -101,26 +91,87 @@ export class GameComponent implements OnInit {
     if (target.id.startsWith('R')) {  // This is the Row not the cell
       return;
     } else {
-        cell = target.id;
+      cell = target.id;
     }
     console.log(`cell clicked = ${cell}`);
     // if (gameState.wasNumberClicked) {
     //     update_puzzle(sq);
     // } else {
-    //     if (sqHasValue(sq)) {
-    //         const classes = String(document.getElementById(sq).classList);
-    //         const buf = classes.split(' ');
-    //         const r = buf[1];
-    //         const c = buf[2];
-    //         console.log(`classes = ${classes}, buf = ${buf}, r = ${r}, c = ${c}`);
-    //         if (gameState.hlRow !== '0') {
-    //             unHighlightRowAndColumn(gameState.hlRow, gameState.hlColumn);
-    //             unHighlightSquareByValue(user_puzzle[sq]);
-    //             setGridDarkBg();
-    //         }
-    //         highlightRowAndColumn(r, c);
-    //         highlightSquareByValue(user_puzzle[sq]);
-    //     }
+    // if (this.sqHasValue(cell)) {
+      // if (gameState.hlRow !== '0') {
+      //   unHighlightRowAndColumn(gameState.hlRow, gameState.hlColumn);
+      //   unHighlightSquareByValue(user_puzzle[sq]);
+      //   setGridDarkBg();
+      // }
+      // highlightRowAndColumn(r, c);
+      // highlightSquareByValue(user_puzzle[sq]);
+    // }
+    // }
+  }
+
+  sqHasValue(sq: string) {
+    // console.log(`puzzle[${sq}] = ${user_puzzle[sq]}`)
+    // return user_puzzle[sq];
+  }
+
+  // numberClicked(e: Event) {
+  //   let n = e.target.id.replace('N', '');
+  //   if (gameState.wasNumberClicked === true) {
+  //     gameState.wasNumberClicked = false;
+  //     gameState.numberClicked = '0';
+  //     board.classList.remove('crosshair');
+  //   } else {
+  //     gameState.wasNumberClicked = true;
+  //     gameState.numberClicked = n;
+  //     board.classList.add('crosshair');
+  //   }
+  // }
+
+  highlightRowAndColumn(row: string, column: string) {
+    console.log(`highlighting row = ${row}, column = ${column}`);
+    // gameState.hlRow = row;
+    // gameState.hlColumn = column;
+    const col = document.getElementsByClassName(column)
+    for (let i = 0; i < col.length; i++) {
+      col[i].classList.remove('grid-dark');  // if it's there
+      col[i].classList.add('selected');
+    }
+    const rw = document.getElementsByClassName(row)
+    for (let i = 0; i < rw.length; i++) {
+      rw[i].classList.remove('grid-dark');  // if it's there
+      rw[i].classList.add('selected');
+    }
+  }
+
+  unHighlightRowAndColumn(row: string, column: string) {
+    console.log(`unhighlighting row = ${row}, column = ${column}`);
+    const col = document.getElementsByClassName(column)
+    for (let i = 0; i < col.length; i++) {
+      col[i].classList.remove('selected');
+    }
+    const r = document.getElementsByClassName(row)
+    for (let i = 0; i < r.length; i++) {
+      r[i].classList.remove('selected');
+    }
+  }
+
+  highlightSquareByValue(value: string) {
+    // for (let k in squares) {
+    //   let sq_id = squares[k];
+    //   if (value === user_puzzle[sq_id]) {
+    //     let sqById = document.getElementById(sq_id);
+    //     sqById.classList.remove('grid-dark');  // if it's there
+    //     sqById.classList.add('selected-red');
+    //   }
+    // }
+  }
+
+  unHighlightSquareByValue(value: string) {
+    // for (let k in squares) {
+    //   let sq_id = squares[k];
+    //   let sqById = document.getElementById(sq_id);
+    //   sqById.classList.remove('grid-dark');  // if it's there
+    //   sqById.classList.remove('selected-red');
     // }
   }
 
