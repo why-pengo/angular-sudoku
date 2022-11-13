@@ -8,6 +8,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TimeComponent } from './time/time.component';
+import { CellComponent } from './cell/cell.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TimeComponent } from './time/time.component';
     GameComponent,
     SettingsComponent,
     PageNotFoundComponent,
-    TimeComponent
+    TimeComponent,
+    CellComponent
   ],
   imports: [
     BrowserModule,

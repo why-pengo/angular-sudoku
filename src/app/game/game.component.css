@@ -8,6 +8,10 @@
     border-radius: .2rem;
 }
 
+#board {
+  min-width: 55rem;
+}
+
 .btn_numbers {
     position: relative;
     top: 25%;

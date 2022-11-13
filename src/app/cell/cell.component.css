@@ -1,0 +1,22 @@
+.cell_value {
+  float: right;
+  font-size: 2rem;
+  text-align: center;
+  /* transform: translateY(-60%); */
+}
+
+.cell_title {
+  float: left;
+  font-size: 0.8rem;
+}
+
+.cell {
+  margin: .5rem;
+  font-size: 2rem;
+  min-width: 6rem;
+  max-width: 6rem;
+  min-height: 6rem;
+  text-align: center !important;
+  border: thin solid #000000;
+  border-radius: .2rem;
+}

@@ -1,404 +1,66 @@
-<div class="container-fluid">
-    <div class="col-12 m-2">
-        <div id="board" (click)="onBoardClick($event)">
-            <div class="row" id="RA">
-                <div class="cell" id="A1">
-                    <p class="cell_title invisible">A1</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="A2">
-                    <p class="cell_title invisible">A2</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="A3">
-                    <p class="cell_title invisible">A3</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="A4">
-                    <p class="cell_title invisible">A4</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="A5">
-                    <p class="cell_title invisible">A5</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="A6">
-                    <p class="cell_title invisible">A6</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="A7">
-                    <p class="cell_title invisible">A7</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="A8">
-                    <p class="cell_title invisible">A8</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="A9">
-                    <p class="cell_title invisible">A9</p>
-                    <p class="cell_value"></p>
-                </div>
-            </div>
-            <div class="row" id="RB">
-                <div class="cell" id="B1">
-                    <p class="cell_title invisible">B1</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="B2">
-                    <p class="cell_title invisible">B2</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="B3">
-                    <p class="cell_title invisible">B3</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="B4">
-                    <p class="cell_title invisible">B4</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="B5">
-                    <p class="cell_title invisible">B5</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="B6">
-                    <p class="cell_title invisible">B6</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="B7">
-                    <p class="cell_title invisible">B7</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="B8">
-                    <p class="cell_title invisible">B8</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="B9">
-                    <p class="cell_title invisible">B9</p>
-                    <p class="cell_value"></p>
-                </div>
-            </div>
-            <div class="row" id="RC">
-                <div class="cell" id="C1">
-                    <p class="cell_title invisible">C1</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="C2">
-                    <p class="cell_title invisible">C2</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="C3">
-                    <p class="cell_title invisible">C3</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="C4">
-                    <p class="cell_title invisible">C4</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="C5">
-                    <p class="cell_title invisible">C5</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="C6">
-                    <p class="cell_title invisible">C6</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="C7">
-                    <p class="cell_title invisible">C7</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="C8">
-                    <p class="cell_title invisible">C8</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="C9">
-                    <p class="cell_title invisible">C9</p>
-                    <p class="cell_value"></p>
-                </div>
-            </div>
-            <div class="row" id="RD">
-                <div class="cell" id="D1">
-                    <p class="cell_title invisible">D1</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="D2">
-                    <p class="cell_title invisible">D2</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="D3">
-                    <p class="cell_title invisible">D3</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="D4">
-                    <p class="cell_title invisible">D4</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="D5">
-                    <p class="cell_title invisible">D5</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="D6">
-                    <p class="cell_title invisible">D6</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="D7">
-                    <p class="cell_title invisible">D7</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="D8">
-                    <p class="cell_title invisible">D8</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="D9">
-                    <p class="cell_title invisible">D9</p>
-                    <p class="cell_value"></p>
-                </div>
-            </div>
-            <div class="row" id="RE">
-                <div class="cell" id="E1">
-                    <p class="cell_title invisible">E1</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="E2">
-                    <p class="cell_title invisible">E2</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="E3">
-                    <p class="cell_title invisible">E3</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="E4">
-                    <p class="cell_title invisible">E4</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="E5">
-                    <p class="cell_title invisible">E5</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="E6">
-                    <p class="cell_title invisible">E6</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="E7">
-                    <p class="cell_title invisible">E7</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="E8">
-                    <p class="cell_title invisible">E8</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="E9">
-                    <p class="cell_title invisible">E9</p>
-                    <p class="cell_value"></p>
-                </div>
-            </div>
-            <div class="row" id="RF">
-                <div class="cell" id="F1">
-                    <p class="cell_title invisible">F1</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="F2">
-                    <p class="cell_title invisible">F2</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="F3">
-                    <p class="cell_title invisible">F3</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="F4">
-                    <p class="cell_title invisible">F4</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="F5">
-                    <p class="cell_title invisible">F5</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="F6">
-                    <p class="cell_title invisible">F6</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="F7">
-                    <p class="cell_title invisible">F7</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="F8">
-                    <p class="cell_title invisible">F8</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="F9">
-                    <p class="cell_title invisible">F9</p>
-                    <p class="cell_value"></p>
-                </div>
-            </div>
-            <div class="row" id="RG">
-                <div class="cell" id="G1">
-                    <p class="cell_title invisible">G1</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="G2">
-                    <p class="cell_title invisible">G2</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="G3">
-                    <p class="cell_title invisible">G3</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="G4">
-                    <p class="cell_title invisible">G4</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="G5">
-                    <p class="cell_title invisible">G5</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="G6">
-                    <p class="cell_title invisible">G6</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="G7">
-                    <p class="cell_title invisible">G7</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="G8">
-                    <p class="cell_title invisible">G8</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="G9">
-                    <p class="cell_title invisible">G9</p>
-                    <p class="cell_value"></p>
-                </div>
-            </div>
-            <div class="row" id="RH">
-                <div class="cell" id="H1">
-                    <p class="cell_title invisible">H1</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="H2">
-                    <p class="cell_title invisible">H2</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="H3">
-                    <p class="cell_title invisible">H3</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="H4">
-                    <p class="cell_title invisible">H4</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="H5">
-                    <p class="cell_title invisible">H5</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="H6">
-                    <p class="cell_title invisible">H6</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="H7">
-                    <p class="cell_title invisible">H7</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="H8">
-                    <p class="cell_title invisible">H8</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="H9">
-                    <p class="cell_title invisible">H9</p>
-                    <p class="cell_value"></p>
-                </div>
-            </div>
-            <div class="row" id="RI">
-                <div class="cell" id="I1">
-                    <p class="cell_title invisible">I1</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="I2">
-                    <p class="cell_title invisible">I2</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="I3">
-                    <p class="cell_title invisible">I3</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="I4">
-                    <p class="cell_title invisible">I4</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="I5">
-                    <p class="cell_title invisible">I5</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="I6">
-                    <p class="cell_title invisible">I6</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="I7">
-                    <p class="cell_title invisible">I7</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="I8">
-                    <p class="cell_title invisible">I8</p>
-                    <p class="cell_value"></p>
-                </div>
-                <div class="cell" id="I9">
-                    <p class="cell_title invisible">I9</p>
-                    <p class="cell_value"></p>
-                </div>
-            </div>
-        </div>
-
-        <div id="numbers" class="row">
-            <div class="cell numbers bg-dark text-white" id="N1">
-                <div class="btn_numbers">1</div>
-            </div>
-            <div class="cell numbers bg-dark text-white" id="N2">
-                <div class="btn_numbers">2</div>
-            </div>
-            <div class="cell numbers bg-dark text-white" id="N3">
-                <div class="btn_numbers">3</div>
-            </div>
-            <div class="cell numbers bg-dark text-white" id="N4">
-                <div class="btn_numbers">4</div>
-            </div>
-            <div class="cell numbers bg-dark text-white" id="N5">
-                <div class="btn_numbers">5</div>
-            </div>
-            <div class="cell numbers bg-dark text-white" id="N6">
-                <div class="btn_numbers">6</div>
-            </div>
-            <div class="cell numbers bg-dark text-white" id="N7">
-                <div class="btn_numbers">7</div>
-            </div>
-            <div class="cell numbers bg-dark text-white" id="N8">
-                <div class="btn_numbers">8</div>
-            </div>
-            <div class="cell numbers bg-dark text-white" id="N9">
-                <div class="btn_numbers">9</div>
-            </div>
-            <div class="cell numbers bg-dark text-white" id="pencil">
-                <div class="btn_numbers">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-pencil" viewBox="0 0 16 16">
-                        <path
-                            d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-                    </svg>
-                </div>
-            </div>
-            <div class="cell numbers bg-dark text-white" id="pen">
-                <div class="btn_numbers">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-        <div class="col-10">
-            <div class="m-1">
-                <form id="options">
-                    <input type="checkbox" id="show_cell_id" (change)="onShowCellId($event)">
-                    <label for="show_cell_id">Show cell Id</label>
-                </form>
-            </div>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-10" (click)="onBoardClick($event)" id="board">
+      <div *ngFor="let r of rows" class="row" id="R{{r}}">
+        <span *ngFor="let i of rowsCount" class="col g-0">
+        <app-cell cellId="{{r}}{{i}}"></app-cell>
+        </span>
+      </div>
     </div>
+    <div class="col-1" id="numbers">
+      <div class="cell numbers bg-dark text-white" id="N1">
+        <div class="btn_numbers">1</div>
+      </div>
+      <div class="cell numbers bg-dark text-white" id="N2">
+        <div class="btn_numbers">2</div>
+      </div>
+      <div class="cell numbers bg-dark text-white" id="N3">
+        <div class="btn_numbers">3</div>
+      </div>
+      <div class="cell numbers bg-dark text-white" id="N4">
+        <div class="btn_numbers">4</div>
+      </div>
+      <div class="cell numbers bg-dark text-white" id="N5">
+        <div class="btn_numbers">5</div>
+      </div>
+      <div class="cell numbers bg-dark text-white" id="N6">
+        <div class="btn_numbers">6</div>
+      </div>
+      <div class="cell numbers bg-dark text-white" id="N7">
+        <div class="btn_numbers">7</div>
+      </div>
+      <div class="cell numbers bg-dark text-white" id="N8">
+        <div class="btn_numbers">8</div>
+      </div>
+      <div class="cell numbers bg-dark text-white" id="N9">
+        <div class="btn_numbers">9</div>
+      </div>
+      <div class="cell numbers bg-dark text-white" id="pencil">
+        <div class="btn_numbers">
+          <svg class="bi bi-pencil" fill="currentColor" height="16" viewBox="0 0 16 16"
+               width="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="cell numbers bg-dark text-white" id="pen">
+        <div class="btn_numbers">
+          <svg class="bi bi-pen" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="col-1">
+      <div class="m-1">
+        <form id="options">
+          <input (change)="onShowCellId($event)" id="show_cell_id" type="checkbox">
+          <label for="show_cell_id">Show cell Id</label>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
