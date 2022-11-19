@@ -1,10 +1,8 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-10" (click)="onBoardClick($event)" id="board">
-      <div *ngFor="let r of rows" class="row" id="R{{r}}">
-        <span *ngFor="let i of rowsCount" class="col g-0">
-        <app-cell cellId="{{r}}{{i}}"></app-cell>
-        </span>
+    <div class="col-10 p-0 m-0" (click)="onBoardClick($event)" id="board">
+      <div *ngFor="let r of rows" class="row m-0" id="R{{r}}">
+        <app-cell *ngFor="let i of rowsCount" class="col p-0" cellId="{{r}}{{i}}"></app-cell>
       </div>
     </div>
     <div class="col-1" id="numbers">

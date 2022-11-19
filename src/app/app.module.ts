@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TimeComponent } from './time/time.component';
 import { CellComponent } from './cell/cell.component';
+import { CellDetailComponent } from './celldetail/cell-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,11 @@ import { CellComponent } from './cell/cell.component';
     SettingsComponent,
     PageNotFoundComponent,
     TimeComponent,
-    CellComponent
+    CellComponent,
+    CellDetailComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

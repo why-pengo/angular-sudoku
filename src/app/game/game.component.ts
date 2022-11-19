@@ -1,22 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Renderer2 } from '@angular/core';
-import { Observable } from 'rxjs';
-
 import { Cell } from '../models/cell';
 import { GameStateService } from '../services/game-state.service';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, AfterViewInit {
   sudoku = this.gameState.sudoku;
   rows = this.gameState.rows;
   rowsCount = this.gameState.rowsCount;
   cells: Cell[] = [];
 
-  constructor(private render: Renderer2, private gameState: GameStateService) {
+  constructor(
+    private render: Renderer2,
+    private gameState: GameStateService,
+    private utilsSrv: UtilsService
+  ) {
     console.log(`sudoku = ${JSON.stringify(this.sudoku)}`);
     console.log(`rowsCount = ${this.rowsCount}`);
     console.log(`rows = ${this.rows}`);
@@ -40,10 +43,16 @@ export class GameComponent implements OnInit {
     // console.log(`cells = ${JSON.stringify(this.cells)}`);
   }
 
-  ngOnInit(): void {
+  onShowCellId(event: Event): void {
+    this.utilsSrv.onShowCellId(event, this.render);
+  }
+
+  ngAfterViewInit(): void {
     this.initializeBoard();
     this.setGridDarkBg();
   }
+
+  ngOnInit(): void {}
 
   initializeBoard() {
     for (let i in this.cells) {
@@ -72,28 +81,6 @@ export class GameComponent implements OnInit {
       let g = document.getElementById(gridList[i]) as HTMLElement;
       console.log(`g = ${g}`);
       this.render.addClass(g, 'grid-dark');
-    }
-  }
-
-  onShowCellId(event: Event) {
-    let target = event.target as HTMLInputElement;
-    let nodes = document.querySelectorAll(
-      '.cell_title'
-    ) as NodeListOf<HTMLElement>;
-    if (target.checked) {
-      nodes.forEach((node) => {
-        this.render.removeClass(node, 'invisible');
-        this.render.addClass(node, 'visible');
-        console.log('checked');
-        console.log(node.classList.value);
-      });
-    } else {
-      nodes.forEach((node) => {
-        this.render.removeClass(node, 'visisble');
-        this.render.addClass(node, 'invisible');
-        console.log('unchecked');
-        console.log(node.classList.value);
-      });
     }
   }
 
