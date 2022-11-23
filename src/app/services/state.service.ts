@@ -1,10 +1,6 @@
-// import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
 export class StateService<T> {
   private state$: BehaviorSubject<T>;
   protected get state(): T {

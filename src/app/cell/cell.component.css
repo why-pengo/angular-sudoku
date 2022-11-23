@@ -23,3 +23,12 @@
   border: thin solid #000000;
   border-radius: .2rem;
 }
+
+.grid-dark {
+  color: white;
+  background-color: #5a6268;
+}
+.guess-match {
+  color: white;
+  background-color: red;
+}

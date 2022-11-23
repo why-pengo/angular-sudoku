@@ -12,9 +12,5 @@ export class CellComponent implements OnInit {
 
   constructor(private utilsSrv: UtilsService, private render: Renderer2) {}
 
-  onShowCellId(event: Event): void {
-    this.utilsSrv.onShowCellId(event, this.render);
-  }
-
   ngOnInit(): void {}
 }

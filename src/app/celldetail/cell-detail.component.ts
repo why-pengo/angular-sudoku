@@ -26,5 +26,8 @@ export class CellDetailComponent implements OnInit {
       this.render.removeClass(guess, 'invisible');
       this.render.addClass(guess, 'visible');
     });
+
+    let guess7 = document.querySelector('#guess7') as HTMLElement;
+    this.render.addClass(guess7, 'guess-match');
   }
 }

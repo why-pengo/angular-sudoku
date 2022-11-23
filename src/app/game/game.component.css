@@ -34,11 +34,6 @@
     /*opacity: .85;*/
 }
 
-.grid-dark {
-    color: white;
-    background-color: #5a6268;
-}
-
 .crosshair {
     cursor: crosshair;
 }

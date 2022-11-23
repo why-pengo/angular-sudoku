@@ -58,7 +58,7 @@ export class GameComponent implements OnInit, AfterViewInit {
     for (let i in this.cells) {
       const cell: Cell = this.cells[i];
       if (cell.value === '-1') continue;
-      console.log(`working on ${JSON.stringify(cell)}`);
+      // console.log(`working on ${JSON.stringify(cell)}`);
       let el = document.getElementById(cell.id) as HTMLElement;
       let ch = el.querySelector('.cell_value') as HTMLElement;
       ch.textContent = cell.value;
@@ -75,39 +75,40 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   gridDarkBg(gridList: any) {
     for (let i in gridList) {
-      console.log(`i = ${i}`);
-      console.log(`gridList[i] = ${gridList[i]}`);
-      console.log(`typeof gridList[i] = ${typeof gridList[i]}`);
+      // console.log(`i = ${i}`);
+      // console.log(`gridList[i] = ${gridList[i]}`);
+      // console.log(`typeof gridList[i] = ${typeof gridList[i]}`);
       let g = document.getElementById(gridList[i]) as HTMLElement;
-      console.log(`g = ${g}`);
       this.render.addClass(g, 'grid-dark');
     }
   }
 
   onBoardClick(event: Event) {
-    console.log(event);
+    // console.log(event);
     const target = event.target as HTMLElement;
     let cell;
-    // console.log(`target_id clicked = ${target.id}`);
     if (target.id.startsWith('R')) {
       // This is the Row not the cell
       return;
     } else {
-      cell = target.id;
+      if (target.id) cell = target.id;
+      else if (target?.parentElement?.id) cell = target.parentElement.id;
+      else if (target?.parentElement?.parentElement?.id)
+        cell = target.parentElement.parentElement.id;
     }
     console.log(`cell clicked = ${cell}`);
     // if (gameState.wasNumberClicked) {
-    //     update_puzzle(sq);
+    //   update_puzzle(sq);
     // } else {
-    // if (this.sqHasValue(cell)) {
-    // if (gameState.hlRow !== '0') {
-    //   unHighlightRowAndColumn(gameState.hlRow, gameState.hlColumn);
-    //   unHighlightSquareByValue(user_puzzle[sq]);
-    //   setGridDarkBg();
-    // }
-    // highlightRowAndColumn(r, c);
-    // highlightSquareByValue(user_puzzle[sq]);
-    // }
+    //   if (this.sqHasValue(cell)) {
+    //     if (gameState.hlRow !== '0') {
+    //       unHighlightRowAndColumn(gameState.hlRow, gameState.hlColumn);
+    //       unHighlightSquareByValue(user_puzzle[sq]);
+    //       setGridDarkBg();
+    //     }
+    //     highlightRowAndColumn(r, c);
+    //     highlightSquareByValue(user_puzzle[sq]);
+    //   }
     // }
   }
 
