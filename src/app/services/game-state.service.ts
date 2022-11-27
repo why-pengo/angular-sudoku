@@ -1,43 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { SudokuCreator } from '@algorithm.ts/sudoku';
-
-import { StateService } from './state.service';
-
-interface GameState {
-  gameOn: boolean;
-  puzzle: object;
-  solution: object;
-  wasNumberClicked: boolean;
-  numberClicked: string;
-  hlRow: string;
-  hlColumn: string;
-  // TODO: implement modes
-  commandMode: boolean; // command mode: highlighting, etc
-  writeMode: boolean; // filling squares in pencil or pen mode
-  pencilMode: boolean;
-  penMode: boolean;
-}
-
-const initialState: GameState = {
-  gameOn: false,
-  puzzle: {},
-  solution: {},
-  wasNumberClicked: false,
-  numberClicked: '0',
-  hlRow: '0',
-  hlColumn: '0',
-  // TODO: implement modes
-  commandMode: true, // command mode: highlighting, etc
-  writeMode: false, // filling squares in pencil or pen mode
-  pencilMode: true,
-  penMode: true,
-};
 
 @Injectable({
   providedIn: 'root',
 })
-export class GameStateService extends StateService<GameState> {
+export class GameStateService {
+  gameOn = false;
+  puzzle = {};
+  solution = {};
+  wasNumberClicked = false;
+  numberClicked = '0';
+  hlRow = '0';
+  hlColumn = '0';
+  // TODO: implement modes
+  commandMode = true; // command mode: highlighting, etc
+  writeMode = false; // filling squares in pencil or pen mode
+  pencilMode = true;
+  penMode = true;
+
   // 3 x 3 = 9
   creator = new SudokuCreator({ childMatrixSize: 3 });
   sudoku = this.creator.createSudoku(1.0);
@@ -55,7 +35,5 @@ export class GameStateService extends StateService<GameState> {
   grid8 = ['G4', 'H4', 'I4', 'G5', 'H5', 'I5', 'G6', 'H6', 'I6'];
   grid9 = ['G7', 'H7', 'I7', 'G8', 'H8', 'I8', 'G9', 'H9', 'I9'];
 
-  constructor() {
-    super(initialState);
-  }
+  constructor() {}
 }
