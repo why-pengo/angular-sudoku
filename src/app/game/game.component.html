@@ -2,38 +2,38 @@
   <div class="row">
     <div class="col-10 p-0 m-0" (click)="onBoardClick($event)" id="board">
       <div *ngFor="let r of rows" class="row m-0" id="R{{r}}">
-        <app-cell *ngFor="let i of rowsCount" class="col p-0" cellId="{{r}}{{i}}"></app-cell>
+        <app-cell *ngFor="let i of rowsCount" class="col p-0 C{{i}}" cellId="{{r}}{{i}}"></app-cell>
       </div>
     </div>
     <div class="col-1" id="numbers">
-      <div class="cell numbers bg-dark text-white" id="N1">
+      <div class="numbers bg-dark text-white" id="N1">
         <div class="btn_numbers">1</div>
       </div>
-      <div class="cell numbers bg-dark text-white" id="N2">
+      <div class="numbers bg-dark text-white" id="N2">
         <div class="btn_numbers">2</div>
       </div>
-      <div class="cell numbers bg-dark text-white" id="N3">
+      <div class="numbers bg-dark text-white" id="N3">
         <div class="btn_numbers">3</div>
       </div>
-      <div class="cell numbers bg-dark text-white" id="N4">
+      <div class="numbers bg-dark text-white" id="N4">
         <div class="btn_numbers">4</div>
       </div>
-      <div class="cell numbers bg-dark text-white" id="N5">
+      <div class="numbers bg-dark text-white" id="N5">
         <div class="btn_numbers">5</div>
       </div>
-      <div class="cell numbers bg-dark text-white" id="N6">
+      <div class="numbers bg-dark text-white" id="N6">
         <div class="btn_numbers">6</div>
       </div>
-      <div class="cell numbers bg-dark text-white" id="N7">
+      <div class="numbers bg-dark text-white" id="N7">
         <div class="btn_numbers">7</div>
       </div>
-      <div class="cell numbers bg-dark text-white" id="N8">
+      <div class="numbers bg-dark text-white" id="N8">
         <div class="btn_numbers">8</div>
       </div>
-      <div class="cell numbers bg-dark text-white" id="N9">
+      <div class="numbers bg-dark text-white" id="N9">
         <div class="btn_numbers">9</div>
       </div>
-      <div class="cell numbers bg-dark text-white" id="pencil">
+      <div class="numbers bg-dark text-white" id="pencil">
         <div class="btn_numbers">
           <svg class="bi bi-pencil" fill="currentColor" height="16" viewBox="0 0 16 16"
                width="16" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +42,7 @@
           </svg>
         </div>
       </div>
-      <div class="cell numbers bg-dark text-white" id="pen">
+      <div class="numbers bg-dark text-white" id="pen">
         <div class="btn_numbers">
           <svg class="bi bi-pen" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
                xmlns="http://www.w3.org/2000/svg">

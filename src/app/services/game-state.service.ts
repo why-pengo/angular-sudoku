@@ -8,7 +8,7 @@ export class GameStateService {
   gameOn = false;
   puzzle = {};
   solution = {};
-  wasNumberClicked = false;
+  wasGuess = false;
   numberClicked = '0';
   hlRow = '0';
   hlColumn = '0';
