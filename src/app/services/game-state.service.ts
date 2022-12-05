@@ -10,8 +10,7 @@ export class GameStateService {
   solution = {};
   wasGuess = false;
   numberClicked = '0';
-  hlRow = '0';
-  hlColumn = '0';
+  curHlCellId = '0';
   // TODO: implement modes
   commandMode = true; // command mode: highlighting, etc
   writeMode = false; // filling squares in pencil or pen mode

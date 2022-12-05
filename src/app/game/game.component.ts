@@ -26,11 +26,7 @@ export class GameComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < 9; i++) {
       let row_p = this.sudoku.puzzle[i];
       let row_s = this.sudoku.solution[i];
-      // console.log(`row ${rows[i]}= ${JSON.stringify(row)}`);
       for (let j = 0; j < 9; j++) {
-        // console.log(`row[j] = ${row[j]}`);
-        // console.log(`cell id: ${rows[i]}${j}, solution: ${row_s[j]}, value: ${row_p[j]}`);
-        // let c: Cell = { id: `${this.rows[i]}${j + 1}`, guess: [], solution: `${row_s[j]}`, value: `${row_p[j]}`, };
         let c = new Cell(
           `${this.rows[i]}${j + 1}`,
           [],
@@ -75,9 +71,6 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   gridDarkBg(gridList: any) {
     for (let i in gridList) {
-      // console.log(`i = ${i}`);
-      // console.log(`gridList[i] = ${gridList[i]}`);
-      // console.log(`typeof gridList[i] = ${typeof gridList[i]}`);
       let g = document.getElementById(gridList[i]) as HTMLElement;
       this.render.addClass(g, 'grid-dark');
     }
@@ -101,11 +94,8 @@ export class GameComponent implements OnInit, AfterViewInit {
       this.update_puzzle(cellId);
     } else {
       if (this.getCellById(cellId)) {
-        if (this.gameState.hlRow !== '0') {
-          this.unHighlightRowAndColumn(
-            this.gameState.hlRow,
-            this.gameState.hlColumn
-          );
+        if (this.gameState.curHlCellId !== '0') {
+          this.unHighlightRowAndColumn(this.gameState.curHlCellId);
           this.unHighlightSquareByValue(cellId.toString());
           this.setGridDarkBg();
         }
@@ -115,8 +105,8 @@ export class GameComponent implements OnInit, AfterViewInit {
     }
   }
 
-  getCellById(cellId: string) {
-    let cell = this.cells.find((c) => c.id === cellId);
+  getCellById(cellId: string): Cell {
+    let cell: Cell = this.cells.find((c) => c.id === cellId)!;
     console.log(`cell[${cellId}] = ${JSON.stringify(cell)}`);
     return cell;
   }
@@ -137,52 +127,60 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   highlightRowAndColumn(cellId: string) {
     let [row, column] = cellId.split('');
-    row = `R${row}`;
-    column = `C${column}`;
     console.log(`highlighting row = ${row}, column = ${column}`);
-    this.gameState.hlRow = row;
-    this.gameState.hlColumn = column;
+    this.gameState.curHlCellId = cellId;
 
-    let cols = document.querySelectorAll(column) as NodeListOf<HTMLElement>;
-    cols.forEach((col) => {
-      console.log(`highlighting column = ${column}`);
-      this.render.removeClass(col, 'grid-dark'); // if it's there
-      this.render.addClass(col, 'selected');
-    });
-    const r = document.getElementById(row) as HTMLElement;
-    this.render.removeClass(r, 'grid-dark'); // if it's there
-    this.render.addClass(r, 'selected');
+    for (let i in this.cells) {
+      const cell: Cell = this.cells[i];
+      if (cell.id.endsWith(column)) {
+        let col = document.getElementById(cell.id.toString()) as HTMLElement;
+        this.render.removeClass(col, 'grid-dark'); // if it's there
+        this.render.addClass(col, 'selected');
+      }
+      if (cell.id.startsWith(row)) {
+        let r = document.getElementById(cell.id.toString()) as HTMLElement;
+        this.render.removeClass(r, 'grid-dark'); // if it's there
+        this.render.addClass(r, 'selected');
+      }
+    }
   }
 
-  unHighlightRowAndColumn(row: string, column: string) {
+  unHighlightRowAndColumn(cellId: string) {
+    let [row, column] = cellId.split('');
     console.log(`unhighlighting row = ${row}, column = ${column}`);
-    const col = document.getElementsByClassName(column);
-    for (let i = 0; i < col.length; i++) {
-      col[i].classList.remove('selected');
-    }
-    const r = document.getElementsByClassName(row);
-    for (let i = 0; i < r.length; i++) {
-      r[i].classList.remove('selected');
+
+    for (let i in this.cells) {
+      const cell: Cell = this.cells[i];
+      if (cell.id.endsWith(column)) {
+        let col = document.getElementById(cell.id.toString()) as HTMLElement;
+        this.render.removeClass(col, 'selected');
+      }
+      if (cell.id.startsWith(row)) {
+        let r = document.getElementById(cell.id.toString()) as HTMLElement;
+        this.render.removeClass(r, 'selected');
+      }
     }
   }
 
   highlightSquareByValue(value: string) {
     for (let k in this.cells) {
-      let sq_id = this.cells[k].id;
-      // if (value === this.sudoku.puzzle[sq_id]) {
-      //   let sqById = document.getElementById(sq_id) as HTMLElement;
-      //   sqById.classList.remove('grid-dark'); // if it's there
-      //   sqById.classList.add('selected-red');
-      // }
+      let cell: Cell = this.cells[k];
+      if (value === cell.value) {
+        let el = document.getElementById(cell.id.toString()) as HTMLElement;
+        this.render.removeClass(el, 'grid-dark'); // if it's there
+        this.render.addClass(el, 'selected-red');
+      }
     }
   }
 
   unHighlightSquareByValue(value: string) {
     for (let k in this.cells) {
-      let sq_id = this.cells[k].id;
-      let sqById = document.getElementById(sq_id) as HTMLElement;
-      sqById.classList.remove('grid-dark'); // if it's there
-      sqById.classList.remove('selected-red');
+      let cell = this.cells[k];
+      if (value === cell.value) {
+        let el = document.getElementById(cell.id.toString()) as HTMLElement;
+        this.render.addClass(el, 'grid-dark');
+        this.render.removeClass(el, 'selected-red');
+      }
     }
   }
 
@@ -190,14 +188,17 @@ export class GameComponent implements OnInit, AfterViewInit {
     console.log(
       `cellId = ${cellId}, numberClicked = ${this.gameState.numberClicked}`
     );
-    let cell = this.getCellById(cellId);
+    let cell: Cell = this.getCellById(cellId);
     console.log(`cell = ${JSON.stringify(cell)}`);
-    // if (this.sudoku.puzzle[sq] !== this.sudoku.solution[sq]) {
-    //   alert(`Error: incorrect.`);
-    // } else {
-    //   // this.sudoku.puzzle[sq] = parseInt(this.gameState.numberClicked);
-    //   let selected_sq = document.getElementById(sq.toString()) as HTMLElement;
-    //   selected_sq.innerHTML += `<div class="sq_value" id="sq_value_${sq}">${this.sudoku.puzzle[sq]}</div>`;
-    // }
+    if (cell.value !== cell.solution) {
+      alert(`Error: incorrect.`);
+    } else {
+      // this.sudoku.puzzle[sq] = parseInt(this.gameState.numberClicked);
+      let selected_sq = document.getElementById(
+        cell.id.toString()
+      ) as HTMLElement;
+      // TODO: stopped here
+      // selected_sq.innerHTML += `<div class="sq_value" id="sq_value_${sq}">${this.sudoku.puzzle[sq]}</div>`;
+    }
   }
 }
