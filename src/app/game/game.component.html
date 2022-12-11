@@ -5,7 +5,7 @@
         <app-cell *ngFor="let i of rowsCount" class="col p-0 C{{i}}" cellId="{{r}}{{i}}"></app-cell>
       </div>
     </div>
-    <div class="col-1" id="numbers">
+    <div class="col-1" id="numbers" (click)="numberClicked($event)">
       <div class="numbers bg-dark text-white" id="N1">
         <div class="btn_numbers">1</div>
       </div>

@@ -20,17 +20,6 @@
     height: 4rem;
 }
 
-.selected {
-    color: white;
-    background-color: black;
-}
-
-.selected-red {
-    color: white;
-    background-color: red;
-    /*opacity: .85;*/
-}
-
 .crosshair {
     cursor: crosshair;
 }

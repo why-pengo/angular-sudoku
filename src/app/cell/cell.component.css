@@ -32,3 +32,15 @@
   color: white;
   background-color: red;
 }
+
+.selected-cell {
+  color: white;
+  background-color: black;
+}
+
+.selected-cell-red {
+  color: white;
+  background-color: red;
+  /*opacity: .85;*/
+}
+
