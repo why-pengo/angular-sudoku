@@ -34,7 +34,7 @@ export class GameComponent implements OnInit, AfterViewInit {
       }
     }
     // console.table(this.sudoku.puzzle);
-    console.table(this.cells);
+    // console.table(this.cells);
   }
 
   onShowCellId(event: Event): void {

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CellDetailComponent } from './cell-detail.component';
+import { CellComponent } from '../cell/cell.component';
 
 describe('CellDetailComponent', () => {
   let component: CellDetailComponent;
@@ -8,7 +8,7 @@ describe('CellDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CellDetailComponent],
+      declarations: [CellDetailComponent, CellComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CellDetailComponent);
