@@ -15,7 +15,7 @@
 }
 
 .cell {
-  margin: 0;
+  margin: 0.1rem;
   font-size: 2rem;
   min-width: 6rem;
   min-height: 6rem;
@@ -30,12 +30,12 @@
 }
 .guess-match {
   color: white;
-  background-color: red;
+  background-color: yellow;
 }
 
 .selected-cell {
   color: white;
-  background-color: black;
+  background-color: lightcoral;
 }
 
 .selected-cell-red {
@@ -43,4 +43,3 @@
   background-color: red;
   /*opacity: .85;*/
 }
-

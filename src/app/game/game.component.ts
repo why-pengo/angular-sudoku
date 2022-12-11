@@ -130,6 +130,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   highlightRowAndColumn(cellId: string) {
     let [row, column] = cellId.split('');
     console.log(`highlighting row = ${row}, column = ${column}`);
+    if (cellId === this.gameState.curHlCellId) return;
     this.gameState.curHlCellId = cellId;
 
     for (let i in this.cells) {
@@ -167,6 +168,7 @@ export class GameComponent implements OnInit, AfterViewInit {
   highlightSquareByValue(cellId: string) {
     console.log(`highlightSquareByValue cellId = ${cellId}`);
     let cellIn: Cell = this.getCellById(cellId);
+    if (cellIn.value === '0') return;
     for (let k in this.cells) {
       let cell: Cell = this.cells[k];
       if (cellIn.value === cell.value) {
