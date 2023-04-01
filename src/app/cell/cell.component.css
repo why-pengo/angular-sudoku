@@ -18,7 +18,9 @@
   margin: 0.1rem;
   font-size: 2rem;
   min-width: 6rem;
+  max-width: 6.7rem;
   min-height: 6rem;
+  max-height: 6rem;
   text-align: center !important;
   border: thin solid #000000;
   border-radius: .2rem;

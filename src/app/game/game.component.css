@@ -1,5 +1,6 @@
 #board {
-  min-width: 55rem;
+  min-width: 60rem;
+  max-width: 60rem;
 }
 
 .btn_numbers {
